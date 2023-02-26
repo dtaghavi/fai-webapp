@@ -2,6 +2,8 @@
     height: 100%;
     width: 100%;
     position: relative;
+    background-color: #F5F5F5;
+
     * {
         transition: .2s;
     }
@@ -17,6 +19,7 @@
             background-size: cover;
             background-repeat: no-repeat;
             
+            background-color: #4A4A4A;
 
             .content-container {
                 position: absolute;
@@ -46,7 +49,8 @@
 
                     /* or 29px */
 
-                    color: #5F6366;
+                    // color: #5F6366;
+                    color: #99A4AE;
                 }
 
                 .launch-btn {
@@ -141,6 +145,8 @@
             justify-content: center;
             align-items: end;
 
+            background-color: #4A4A4A;
+
             .content-container {
                 display: flex;
                 justify-content: center;
@@ -201,7 +207,8 @@
                             /* or 36px */
                             text-align: center;
 
-                            color: #5F6366;
+                            // color: #5F6366;
+                            color: #99A4AE;
                         }
                     }
                 }
@@ -221,6 +228,8 @@
             display: flex;
             justify-content: center;
             align-items: end;
+
+            background-color: #4A4A4A;
 
             .content-container {
                 display: flex;
@@ -282,7 +291,8 @@
                             /* or 36px */
                             text-align: center;
 
-                            color: #5F6366;
+                            // color: #5F6366;
+                            color: #99A4AE;
                         }
                     }
                 }
