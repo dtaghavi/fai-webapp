@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Neue Machina';
+    src: url('./assets/fonts/NeueMachina-Regular.otf');
+  }
+@font-face {
+    font-family: 'Neue Machina Light';
+    src: url('./assets/fonts//NeueMachina-Light.otf');
+  }
+@font-face {
+    font-family: 'Neue Machina Ultra Bold';
+    src: url('./assets/fonts/NeueMachina-Ultrabold.otf');
+  }
+
+.container-fluid {
+  padding: 0 !important;
+}

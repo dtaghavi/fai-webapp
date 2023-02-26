@@ -1,0 +1,145 @@
+:host {
+    position: absolute;
+    overflow: hidden;
+    width: 100vw;
+    height: 92px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(3.5px);
+
+    display: flex;
+    align-items: center;
+    padding: 15px 45px;
+    transition: .2s;
+
+    * {
+        color: white;
+        font-family: "Neue Machina";
+    }
+
+    .container-fluid {
+        background: transparent !important;
+        height: 100%;
+        width: 100%;
+        
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .brand {
+            font-weight: 800;
+            font-size: 25px;
+            line-height: 24px;
+
+            .logo {
+                height: auto !important;
+                width: 100%;
+            }
+        }
+
+        .link-container {
+            flex: 1 0 0px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            .nav-item {
+                cursor: pointer;
+                a {
+                    text-decoration: inherit;
+                    color: inherit;
+                }
+
+                &.btn-connect {
+                    margin-left: 30px;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    
+                    &:hover {
+                        color: rgba(255, 255, 255, 1);
+
+                        span {
+                            text-shadow:
+                                0 0 7px #fff,
+                                0 0 10px #fff,
+                                0 0 21px #fff,
+                                0 0 42px #0fa,
+                                0 0 82px #0fa,
+                                0 0 92px #0fa,
+                                0 0 102px #0fa,
+                                0 0 151px #0fa;
+                        }
+                    }
+
+                    span {
+                        position: absolute;
+                    }
+                }
+
+                .nav-link {
+                    font-family: "Rubik";
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 19px;
+                }
+            }
+
+            .dot {
+                width: 7px;
+                height: 7px;
+                border-radius: 100%;
+                margin: 0 10px;
+                background: #ffffff;
+            }
+        }
+
+        .mobile-menu {
+            position: absolute;
+            top: 100%;
+            height: calc(100vh - 92px);
+            width: 100%;
+            left: 100%;
+            opacity: 0;
+            transition: .2s linear;
+            transition-property: left,opacity;
+        }
+
+        .ham-menu {
+            cursor: pointer;
+            color: white;
+            opacity: 0;
+            height: 100%;
+            width: 35px;
+
+            transition: .2s;
+        }
+    }
+}
+
+@media (max-width: 812px) {
+    :host {
+        padding: 5px 25px !important;
+        height: 66px;
+    }
+    .container-fluid {
+        .link-container {
+            display: none !important;
+        }
+
+        .mobile-menu {
+            &.open {
+                left: 0 !important;
+                opacity: 1 !important;
+                transition-property: left !important;
+            }
+        }
+
+        .ham-menu {
+            opacity: 1 !important;
+        }
+
+    }
+}

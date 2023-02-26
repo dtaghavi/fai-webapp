@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div class="brand">
+        <img class="logo" src="../../../assets/trans_logo.svg" alt="logo"
+        />
+    </div>
+
+    <!-- Mobile menu toggle -->
+    <img class="ham-menu" src="../../../assets/white-ham.svg" *ngIf="!mobileToggle" (click)="mobileToggle = !mobileToggle">
+    <img class="ham-menu" src="../../../assets/close-icon.svg" *ngIf="mobileToggle" (click)="mobileToggle = !mobileToggle">
+    <!-- Right Side: Links -->
+    <div class="link-container">
+        <div class="nav-item">
+            <div class="nav-link">DAPP</div>
+        </div>
+
+        <span class="dot"></span>
+
+        <div class="nav-item">
+            <a class="nav-link" href="https://vividuniverse.gitbook.io/foreverai/tokenomics/fai-token-metrics" target="_blank">TOKENOMICS</a>
+        </div>
+
+        <span class="dot"></span>
+
+        <div class="nav-item">
+            <a class="nav-link" href="https://vividuniverse.gitbook.io/foreverai/" target="_blank">WHITEPAPER</a>
+        </div>
+
+        <div class="nav-item btn-connect">
+            <img src="../../../assets/btn.svg" alt="connect">
+            <span>CONNECT WALLET</span>
+        </div>
+    </div>
+
+    <!-- Mobile menu: Only shows when toggled and in mobile size. -->
+    <div class="mobile-menu" [ngClass]="{open: mobileToggle}">
+        <div class="nav-item">
+            <a class="nav-link" href="https://vividuniverse.gitbook.io/foreverai/tokenomics/fai-token-metrics">TOKENOMICS</a>
+        </div>
+
+        <div class="nav-item">
+            <a class="nav-link" href="https://vividuniverse.gitbook.io/foreverai/">WHITEPAPER</a>
+        </div>
+
+        <div class="nav-item btn-connect">
+            <img src="../../../assets/btn.svg" alt="connect">
+            <span>CONNECT WALLET</span>
+        </div>
+    </div>
+</div>
