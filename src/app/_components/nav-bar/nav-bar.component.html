@@ -3,9 +3,10 @@
         <img class="logo" src="../../../assets/trans_logo.svg" alt="logo"
         />
     </div>
+    
 
     <!-- Mobile menu toggle -->
-    <img class="ham-menu" src="../../../assets/white-ham.svg" *ngIf="!mobileToggle" (click)="mobileToggle = !mobileToggle">
+    <img class="ham-menu" src="../../../assets/white-ham.svg" *ngIf="!mobileToggle">
     <img class="ham-menu" src="../../../assets/close-icon.svg" *ngIf="mobileToggle" (click)="mobileToggle = !mobileToggle">
     <!-- Right Side: Links -->
     <div class="link-container">

@@ -1,6 +1,6 @@
 :host {
     position: absolute;
-    overflow: hidden;
+    // overflow: hidden;
     width: 100vw;
     height: 92px;
     box-sizing: border-box;
@@ -131,9 +131,20 @@
 
         .mobile-menu {
             &.open {
+                top: 66px;
+                height: calc(100vh - 66px);
                 left: 0 !important;
                 opacity: 1 !important;
                 transition-property: left !important;
+                z-index: 100;
+                display: flex;
+                flex-direction: column;
+
+                .nav-item {
+                    flex: 1 0 auto;
+                    background: #1a1a17;
+                    backdrop-filter: blur(3.5px);
+                }
             }
         }
 

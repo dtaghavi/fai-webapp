@@ -15,20 +15,20 @@ export class HomeComponent {
     constructor() {
         this.sectionOne = document.getElementById('section-one');
 
-        // setInterval(() => {
-        //     if (this.background_index == 5) {
-        //         this.background_index = 1;
-        //     } else {
-        //         this.background_index++;
-        //     }
+        setInterval(() => {
+            if (this.background_index == 5) {
+                this.background_index = 1;
+            } else {
+                this.background_index++;
+            }
 
-        //     if(this.sectionOne) {
-        //         this.sectionOne.style.backgroundImage = `url('../../../assets/slide/${this.background_index}.png')`;
-        //     } else {
-        //         this.sectionOne = document.getElementById('section-one');
-        //         this.sectionOne!.style.backgroundImage = `url('../../../assets/slide/${this.background_index}.png')`;
-        //     }
+            if(this.sectionOne) {
+                this.sectionOne.style.backgroundImage = `url('../../../assets/slide/${this.background_index}.png')`;
+            } else {
+                this.sectionOne = document.getElementById('section-one');
+                this.sectionOne!.style.backgroundImage = `url('../../../assets/slide/${this.background_index}.png')`;
+            }
     
-        // }, 10000);
+        }, 10000);
     }
 }
