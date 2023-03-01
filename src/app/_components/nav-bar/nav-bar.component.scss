@@ -1,13 +1,13 @@
 :host {
     position: absolute;
-    // overflow: hidden;
+    overflow: hidden;
     width: 100vw;
     height: 92px;
     box-sizing: border-box;
     background: rgba(255, 255, 255, 0.02);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(3.5px);
-
+    top: 0;
     display: flex;
     align-items: center;
     padding: 15px 45px;
