@@ -9,9 +9,9 @@ export class HomeComponent {
     sectionOne;
 
     private background_index = 1;
-    get BGImgPath(): string {
-        return `../../../assets/slide/${this.background_index}.png`;
-    }
+    // get BGImgPath(): string {
+    //     return `../../../assets/slide/${this.background_index}.png`;
+    // }
     constructor() {
         this.sectionOne = document.getElementById('section-one');
         for( let i = 1; i < 4; i++) {
@@ -26,12 +26,12 @@ export class HomeComponent {
                 this.background_index++;
             }
 
-            // if(this.sectionOne) {
-            //     this.sectionOne.style.backgroundImage = `url('../../../assets/slide/${this.background_index}.png')`;
-            // } else {
-            //     this.sectionOne = document.getElementById('section-one');
-            //     this.sectionOne!.style.backgroundImage = `url('../../../assets/slide/${this.background_index}.png')`;
-            // }
+            if(this.sectionOne) {
+                this.sectionOne.style.backgroundImage = `url('../../../assets/slide/${this.background_index}.png')`;
+            } else {
+                this.sectionOne = document.getElementById('section-one');
+                this.sectionOne!.style.backgroundImage = `url('../../../assets/slide/${this.background_index}.png')`;
+            }
         }, 4000);
     }
 }
