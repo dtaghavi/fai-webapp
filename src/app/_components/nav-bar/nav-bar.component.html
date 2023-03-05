@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="brand">
+    <div class="brand" routerLink="">
         <img class="logo" src="../../../assets/trans_logo.svg" alt="logo"
         />
     </div>
@@ -11,7 +11,7 @@
     <!-- Right Side: Links -->
     <div class="link-container">
         <div class="nav-item">
-            <div class="nav-link">DAPP</div>
+            <div class="nav-link" routerLink="mint">DAPP</div>
         </div>
 
         <span class="dot"></span>
@@ -26,9 +26,9 @@
             <a class="nav-link" href="https://vividuniverse.gitbook.io/foreverai/" target="_blank">WHITEPAPER</a>
         </div>
 
-        <div class="nav-item btn-connect">
+        <div class="nav-item btn-connect" (click)="handleConnectClick()">
             <img src="../../../assets/btn.svg" alt="connect">
-            <span>CONNECT WALLET</span>
+            <span>{{ trimmedAddr }}</span>
         </div>
     </div>
 

@@ -1,0 +1,51 @@
+:host {
+    position: absolute;
+    z-index: 999;
+    top: 92px;
+    right: 0;
+    width: 92px;
+    height: calc(100% - 92px);
+
+    background: rgba(255, 255, 255, 0.02);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(3.5px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: ease 0.9s;
+
+    a.social {
+        &:hover {
+            // box-shadow: 0 0 8px white;
+            transform: scale(1.3);
+        }
+
+        position: relative;
+        text-decoration: inherit;
+        color: inherit;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .container-bg {
+            height: 100%;
+            width: auto;
+        }
+
+        .icon {
+            position: absolute;
+        }
+    }
+}
+
+
+@media (max-width: 768px) {
+    :host {
+        top: 66px;
+        width: 66px;
+        height: calc(100% - 66px);
+    }
+}

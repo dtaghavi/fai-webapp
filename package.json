@@ -1,6 +1,6 @@
 {
   "name": "fai-webapp",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -24,10 +24,14 @@
     "@fortawesome/free-brands-svg-icons": "^6.3.0",
     "@fortawesome/free-regular-svg-icons": "^6.3.0",
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@ng-bootstrap/ng-bootstrap": "^14.0.1",
+    "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
     "font-awesome": "^4.7.0",
     "rxjs": "~7.8.0",
+    "socket.io-client": "^4.6.1",
     "tslib": "^2.3.0",
+    "web3": "^1.8.2",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {

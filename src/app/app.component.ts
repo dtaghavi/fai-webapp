@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SocketService } from './_services/socket.service';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Forever AI';
-  constructor() {}
+  constructor(
+    private socket: SocketService
+  ) {}
 }

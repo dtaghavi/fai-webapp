@@ -7,15 +7,14 @@ const routes: Routes = [
         loadChildren: () => import('./_pages/home/home.module').then( m => m.HomeComponentModule)
     },
     {
-        path: '',
-        redirectTo: '/home',
-        pathMatch: 'full'
+        path: 'mint',
+        loadChildren: () => import('./_pages/mint/mint.module').then( m => m.MintComponentModule)
     },
     {
-        path: '**',
+        path: '',
         redirectTo: 'home',
         pathMatch: 'full'
-    },
+    }
 ];
 
 @NgModule({

@@ -1,1 +1,211 @@
-<p>mint works!</p>
+<div class="container p-3">
+    <div class="row preview-row">
+        <button class="btn btn-primary mb-2" (click)="onClear()" *ngIf="preview && !isLoading">Edit Prompt</button>
+
+        <div class="preview-container mb-2" *ngIf="previewBox" [ngStyle]="{'padding-bottom': containerAspect ? containerAspect + '%' : null}">
+            
+            <div class="image-container" [class]="zoom">
+                <ng-container [ngSwitch]="previewMode" *ngIf="!waiting">
+
+                    <div class="quads desktop" *ngSwitchCase="'quad'">
+                        <div class="image-cover">
+                            <div class="buttons">
+                                <a class="btn btn-primary mb-2" (click)="onInteract('variants-1')">
+                                    <fa-icon [icon]="['fas', 'table-cells-large']"></fa-icon>
+                                    Variants
+                                </a>
+                                <br>
+                                <a class="btn btn-primary" (click)="onInteract('upscale-1')">
+                                    <fa-icon [icon]="['fas', 'expand']"></fa-icon>
+                                    Upscale
+                                </a>
+                            </div>
+                        </div>
+                        <div class="image-cover">
+                            <div class="buttons">
+                                <a class="btn btn-primary mb-2" (click)="onInteract('variants-2')">
+                                    <fa-icon [icon]="['fas', 'table-cells-large']"></fa-icon>
+                                    Variants
+                                </a>
+                                <br>
+                                <a class="btn btn-primary" (click)="onInteract('upscale-2')">
+                                    <fa-icon [icon]="['fas', 'expand']"></fa-icon>
+                                    Upscale
+                                </a>
+                            </div>
+                        </div>
+                        <div class="image-cover">
+                            <div class="buttons">
+                                <a class="btn btn-primary mb-2" (click)="onInteract('variants-3')">
+                                    <fa-icon [icon]="['fas', 'table-cells-large']"></fa-icon>
+                                    Variants
+                                </a>
+                                <br>
+                                <a class="btn btn-primary" (click)="onInteract('upscale-3')">
+                                    <fa-icon [icon]="['fas', 'expand']"></fa-icon>
+                                    Upscale
+                                </a>
+                            </div>
+                        </div>
+                        <div class="image-cover">
+                            <div class="buttons">
+                                <a class="btn btn-primary mb-2" (click)="onInteract('variants-4')">
+                                    <fa-icon [icon]="['fas', 'table-cells-large']"></fa-icon>
+                                    Variants
+                                </a>
+                                <br>
+                                <a class="btn btn-primary" (click)="onInteract('upscale-4')">
+                                    <fa-icon [icon]="['fas', 'expand']"></fa-icon>
+                                    Upscale
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quads mobile" *ngSwitchCase="'quad'">
+                        <div class="image-cover" (click)="onZoom(1)">
+                            <div class="buttons">
+                                <div class="controls">
+                                    <a class="btn btn-primary view" (click)="onUnZoom($event)">
+                                        <fa-icon [icon]="['fas', 'times']"></fa-icon>
+                                        Back
+                                    </a>
+
+                                    <a class="btn btn-outline-light view" (click)="onViewClick($event)">
+                                        <fa-icon [icon]="['fas', 'eye']"></fa-icon>
+                                    </a>
+                                </div>
+                                <a class="btn btn-primary mb-2" (click)="onInteract('variants-1')">
+                                    <fa-icon [icon]="['fas', 'table-cells-large']"></fa-icon>
+                                    Variants
+                                </a>
+                                <br>
+                                <a class="btn btn-primary" (click)="onInteract('upscale-1')">
+                                    <fa-icon [icon]="['fas', 'expand']"></fa-icon>
+                                    Upscale
+                                </a>
+                            </div>
+                        </div>
+                        <div class="image-cover" (click)="onZoom(2)">
+                            <div class="buttons">
+                                <div class="controls">
+                                    <a class="btn btn-primary view" (click)="onUnZoom($event)">
+                                        <fa-icon [icon]="['fas', 'times']"></fa-icon>
+                                        Back
+                                    </a>
+
+                                    <a class="btn btn-outline-light view" (click)="onViewClick($event)">
+                                        <fa-icon [icon]="['fas', 'eye']"></fa-icon>
+                                    </a>
+                                </div>
+                                <a class="btn btn-primary mb-2" (click)="onInteract('variants-2')">
+                                    <fa-icon [icon]="['fas', 'table-cells-large']"></fa-icon>
+                                    Variants
+                                </a>
+                                <br>
+                                <a class="btn btn-primary" (click)="onInteract('upscale-2')">
+                                    <fa-icon [icon]="['fas', 'expand']"></fa-icon>
+                                    Upscale
+                                </a>
+                            </div>
+                        </div>
+                        <div class="image-cover" (click)="onZoom(3)">
+                            <div class="buttons">
+                                <div class="controls">
+                                    <a class="btn btn-primary view" (click)="onUnZoom($event)">
+                                        <fa-icon [icon]="['fas', 'times']"></fa-icon>
+                                        Back
+                                    </a>
+
+                                    <a class="btn btn-outline-light view" (click)="onViewClick($event)">
+                                        <fa-icon [icon]="['fas', 'eye']"></fa-icon>
+                                    </a>
+                                </div>
+                                <a class="btn btn-primary mb-2" (click)="onInteract('variants-3')">
+                                    <fa-icon [icon]="['fas', 'table-cells-large']"></fa-icon>
+                                    Variants
+                                </a>
+                                <br>
+                                <a class="btn btn-primary" (click)="onInteract('upscale-3')">
+                                    <fa-icon [icon]="['fas', 'expand']"></fa-icon>
+                                    Upscale
+                                </a>
+                            </div>
+                        </div>
+                        <div class="image-cover" (click)="onZoom(4)">
+                            <div class="buttons">
+                                <div class="controls">
+                                    <a class="btn btn-primary view" (click)="onUnZoom($event)">
+                                        <fa-icon [icon]="['fas', 'times']"></fa-icon>
+                                        Back
+                                    </a>
+
+                                    <a class="btn btn-outline-light view" (click)="onViewClick($event)">
+                                        <fa-icon [icon]="['fas', 'eye']"></fa-icon>
+                                    </a>
+                                </div>
+                                <a class="btn btn-primary mb-2" (click)="onInteract('variants-4')">
+                                    <fa-icon [icon]="['fas', 'table-cells-large']"></fa-icon>
+                                    Variants
+                                </a>
+                                <br>
+                                <a class="btn btn-primary" (click)="onInteract('upscale-4')">
+                                    <fa-icon [icon]="['fas', 'expand']"></fa-icon>
+                                    Upscale
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </ng-container>
+    
+                <img [src]="preview" *ngIf="preview">
+            </div>
+
+            <div class="waiting" *ngIf="!isLoading && waiting">
+                <div class="spinning">
+                    <fa-icon [icon]="['fas', 'spinner']" size="3x" animation="spin"></fa-icon>
+                </div>
+            </div>
+
+            <div class="loading-bar" *ngIf="isLoading">
+                <div class="bar" [style.width.%]="percent ? percent : 0"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="error">
+        <div class="error" >
+            <p >{{ error }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- <div class="aspects" *ngIf="!preview">
+            <div class="aspect square"    [class.active]="aspect == 'square'"    (click)="onSetAspect('square')"></div>
+            <div class="aspect portrait"  [class.active]="aspect == 'portrait'"  (click)="onSetAspect('portrait')"></div>
+            <div class="aspect landscape" [class.active]="aspect == 'landscape'" (click)="onSetAspect('landscape')"></div>
+        </div> -->
+        <div class="col-md-9">
+            <input class="form-control prompt-input" name="" id="" cols="30" rows="2" placeholder="Prompt your desired image" [(ngModel)]="prompt" [readonly]="waiting" *ngIf="!preview">
+        </div>
+        <div class="col-md-3">
+            <button class="grn-btn" (click)="onCreate()" [disabled]="waiting" *ngIf="!preview">Generate</button>
+        </div>
+        
+
+    </div>
+    <!-- <div class="row" *ngIf="preview && previewMode == 'upscale'">
+        <div class="product-description" [innerHTML]="description"></div>
+        <select class="form-control" name="" id="" [(ngModel)]="product" (change)="onProductChanged()">
+            <option [value]="undefined">Canvas Size</option>
+            <option [ngValue]="product" *ngFor="let product of products">{{ product.title }}</option>
+        </select>
+
+        <div class="product" *ngIf="product">
+            <h4>${{ product.price.amount }}</h4>
+            <button (click)="addToCart()" class="btn btn-primary d-block" [disabled]="addingToCart">Add To Cart</button>
+        </div>
+    </div> -->
+</div>

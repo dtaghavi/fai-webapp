@@ -11,7 +11,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
         HomeComponentRoutingModule
     ],
     declarations: [
-        NavBarComponent,
         HomeComponent
     ]
 })
