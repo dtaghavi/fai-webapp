@@ -14,9 +14,9 @@
     background-color: #1e1d18;
     .preview-row {
         padding: 0 20%;
-        
+
         @include media-breakpoint-down(sm) {
-            padding: 0 15% 0 15px;
+            padding: 0 20% 0 15px;
         }
     }
     .preview-container {
