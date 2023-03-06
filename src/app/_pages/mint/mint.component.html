@@ -1,6 +1,17 @@
-<div class="container p-3">
+<div class="container p-3 main-container">
+    <div class="row">
+        <div class="col-lg-9">
+            <input class="form-control prompt-input" name="" id="" cols="30" rows="2" placeholder="Prompt your desired image" [(ngModel)]="prompt" [readonly]="waiting">
+        </div>
+        <div class="col-lg-3">
+            <button class="grn-btn" (click)="onCreate()" [disabled]="waiting">Generate</button>
+        </div>
+        
+
+    </div>
+    
     <div class="row preview-row">
-        <button class="btn btn-primary mb-2" (click)="onClear()" *ngIf="preview && !isLoading">Edit Prompt</button>
+        <!-- <button class="btn btn-primary mb-2" (click)="onClear()" *ngIf="preview && !isLoading">Edit Prompt</button> -->
 
         <div class="preview-container mb-2" *ngIf="previewBox" [ngStyle]="{'padding-bottom': containerAspect ? containerAspect + '%' : null}">
             
@@ -181,31 +192,23 @@
         </div>
     </div>
 
-    <div class="row">
-        <!-- <div class="aspects" *ngIf="!preview">
-            <div class="aspect square"    [class.active]="aspect == 'square'"    (click)="onSetAspect('square')"></div>
-            <div class="aspect portrait"  [class.active]="aspect == 'portrait'"  (click)="onSetAspect('portrait')"></div>
-            <div class="aspect landscape" [class.active]="aspect == 'landscape'" (click)="onSetAspect('landscape')"></div>
-        </div> -->
-        <div class="col-md-9">
-            <input class="form-control prompt-input" name="" id="" cols="30" rows="2" placeholder="Prompt your desired image" [(ngModel)]="prompt" [readonly]="waiting" *ngIf="!preview">
-        </div>
-        <div class="col-md-3">
-            <button class="grn-btn" (click)="onCreate()" [disabled]="waiting" *ngIf="!preview">Generate</button>
-        </div>
-        
-
+    <div class="row mt-5" *ngIf="preview">
+        <button class="grn-btn mint-btn" style="height: 80px;" (click)="mint()">MINT</button>
     </div>
-    <!-- <div class="row" *ngIf="preview && previewMode == 'upscale'">
-        <div class="product-description" [innerHTML]="description"></div>
-        <select class="form-control" name="" id="" [(ngModel)]="product" (change)="onProductChanged()">
-            <option [value]="undefined">Canvas Size</option>
-            <option [ngValue]="product" *ngFor="let product of products">{{ product.title }}</option>
-        </select>
 
-        <div class="product" *ngIf="product">
-            <h4>${{ product.price.amount }}</h4>
-            <button (click)="addToCart()" class="btn btn-primary d-block" [disabled]="addingToCart">Add To Cart</button>
+    <div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+          Hello, world! This is a toast message.
+         </div>
+          <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
-    </div> -->
+    </div>
+</div>
+
+<div class="footer">
+    <div class="brand">
+        <img class="logo" src="../../../assets/trans_logo.svg" alt="logo"
+        />
+    </div>
 </div>

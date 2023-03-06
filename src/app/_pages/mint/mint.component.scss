@@ -1,22 +1,69 @@
 @import 'bootstrap/scss/functions';
 @import 'bootstrap/scss/variables';
 @import 'bootstrap/scss/mixins/breakpoints';
+* {
+    transition: .2s;
+}
+
 :host {
     display: block;
     height: 100vh;
     width: 100vw;
-    padding-top: 15%;
-
+    padding-top: 150px;
     background-image: url('../../../assets/backgrounds/mint_bg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-color: #1e1d18;
+
+    *{
+        font-family: 'Rubik';
+    }
+
+    @include media-breakpoint-down(sm) {
+        padding-top: 65px;
+        padding-right: 60px;
+    }
+
+    .main-container {
+        @include media-breakpoint-down(sm) {
+            padding-top: 55px !important;
+        }
+    }
+
     .preview-row {
+        margin-top: 5rem;
         padding: 0 20%;
 
+        .btn-primary {
+            // color: #00D06C !important;
+            background-image: url('../../../assets/grn-btn.svg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            background-color: transparent;
+            border: none;
+            color: white;
+            height: auto;
+            width: 100%;
+
+            &:hover {
+                color: rgba(255, 255, 255, 1);
+
+                text-shadow:
+                    0 0 7px #fff,
+                    0 0 10px #fff,
+                    0 0 21px #fff,
+                    0 0 42px #0fa,
+                    0 0 82px #0fa,
+                    0 0 92px #0fa,
+                    0 0 102px #0fa,
+                    0 0 151px #0fa;
+            }
+        }
+        
         @include media-breakpoint-down(sm) {
-            padding: 0 20% 0 15px;
+            padding: 0 15px 0 10px;
         }
     }
     .preview-container {
@@ -44,7 +91,7 @@
             .bar {
                 display: block;
                 height: 100%;
-                background-color: #60a2ff;
+                background-color: #00D06C;
                 transition: width .3s ease-out;
             }
         }
@@ -64,6 +111,7 @@
         }
 
         .image-container {
+            cursor: pointer;
             position: absolute;
             top: 0px;
             width: 100%;
@@ -272,25 +320,51 @@
     .prompt-input {
         background-image: url('../../../assets/input.png');
         background-repeat: no-repeat;
-        background-position: left center;
-        background-size: 100%;
+        background-position: right center;
+        background-size: cover;
         background-color: transparent;
         border: none;
         color: white;
         height: 57px;
         width: 100%;
+
         &:focus {
             outline: none !important;
             box-shadow: unset;
         }
 
-        @include media-breakpoint-down(sm) {
-
+        @include media-breakpoint-down(lg) {
+            margin-bottom: 15px;
         }
     }
 
-    
+    .mint-btn {
+        cursor: pointer;
+        background-image: url('../../../assets/grn-btn.svg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        background-color: transparent;
+        border: none;
+        color: white;
+        font-size: 30px;
+        height: 80px;
+        width: 100%;
 
+        &:hover {
+            color: rgba(255, 255, 255, 1);
+
+            text-shadow:
+                0 0 7px #fff,
+                0 0 10px #fff,
+                0 0 21px #fff,
+                0 0 42px #0fa,
+                0 0 82px #0fa,
+                0 0 92px #0fa,
+                0 0 102px #0fa,
+                0 0 151px #0fa;
+        } 
+    }
     .grn-btn {
         background-image: url('../../../assets/grn-btn.svg');
         background-repeat: no-repeat;
@@ -299,7 +373,7 @@
         background-color: transparent;
         border: none;
         color: white;
-        height: 52px;
+        height: 57px;
         width: 100%;
 
         &:hover {
@@ -358,6 +432,37 @@
                 width: calc(var(--aspect-width) * 1.5);
                 height: var(--aspect-width);
             }
+        }
+    }
+
+    .footer {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: calc(100% - 66px);
+        height: 84px;
+
+        border-top: 2px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(3.5px);
+
+        display: none;
+        
+
+        .brand {
+            font-weight: 800;
+            font-size: 25px;
+            line-height: 24px;
+
+            .logo {
+                height: 100% !important;
+                width: auto;
+            }
+        }
+
+        @include media-breakpoint-down(sm) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { SocketService } from 'src/app/_services/socket.service';
+import { AppToastService } from 'src/app/_services/toast.service';
 
 
 const aspectReg = /(-{2}ar|-{2}aspect{1})\s(\d+:\d+)/gm
@@ -54,7 +55,8 @@ export class MintComponent {
 
     constructor(
         private socket: SocketService,
-        private sanitizer: DomSanitizer
+        private sanitizer: DomSanitizer,
+        private toastService: AppToastService
     ) {
         this.socket.io.on('prompt-preview', async (update: Updates) => {
             this.containerAspect = await this.getAspect(update.url);
@@ -222,6 +224,14 @@ export class MintComponent {
             if (off) buttons.classList.remove('hide');
             else buttons.classList.toggle('hide');
         }
+    }
+
+    async mint() {
+         this.toastService.show({
+            header: 'Mint Not Live',
+            body: 'Minting will be allowed upon the launch of FAI Token.',
+            delay: 10000
+        })
     }
 
     // addingToCart: boolean = false;

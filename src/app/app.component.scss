@@ -1,3 +1,27 @@
 :host {
+    .toast-container {
+        position: fixed;
+        bottom: 15px;
+        left: 15px;
+        width: 100%;
+        font-family: 'Rubik';
+        
+        .toast {
+            // position: absolute;
+            // background-color: var(--background-primary);
+            // color: var(--text-color);
+
+            .toast-header {
+                background-color: rgb(249, 76, 76);
+                color: #00c168;
+            }
     
+            .toast-body {
+                * a {
+                    color: #1e1d18;
+                }
+    
+            }
+        }
+    }
 }

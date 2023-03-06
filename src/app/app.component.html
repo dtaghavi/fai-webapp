@@ -1,3 +1,17 @@
 <app-nav-bar></app-nav-bar>
 <app-socials-bar></app-socials-bar>
 <router-outlet></router-outlet>
+
+<div class="toast-container">
+    <ngb-toast
+    *ngFor="let toast of toastService.toasts" class="mb-2"
+    [header]="toast.header" [autohide]="true" [delay]="toast.delay || 5000"
+    (hidden)="toastService.remove(toast)" 
+    >
+    <div ngbToastBody>
+        {{toast.body}}
+
+        <a *ngIf="toast.link" [href]="toast.link.url" target="_blank">{{toast.link.label}}</a>
+    </div>
+    </ngb-toast>
+</div>

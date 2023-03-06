@@ -30,7 +30,7 @@ export class HomeComponent {
                 this.sectionOne.style.backgroundImage = `url('../../../assets/slide/${this.background_index}.png')`;
             } else {
                 this.sectionOne = document.getElementById('section-one');
-                this.sectionOne!.style.backgroundImage = `url('../../../assets/slide/${this.background_index}.png')`;
+                if(this.sectionOne) this.sectionOne.style.backgroundImage = `url('../../../assets/slide/${this.background_index}.png')`;
             }
         }, 4000);
     }

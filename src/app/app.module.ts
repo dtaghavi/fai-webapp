@@ -12,6 +12,7 @@ import { SocketService } from './_services/socket.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavBarComponent } from './_components/nav-bar/nav-bar.component';
 import { SocialsBarComponent } from './_components/socials-bar/socials-bar.component';
+import { AppToastService } from './_services/toast.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SocialsBarComponent } from './_components/socials-bar/socials-bar.compo
     NgbModule
   ],
   providers: [
-    SocketService
+    SocketService,
+    AppToastService
   ],
   bootstrap: [AppComponent]
 })

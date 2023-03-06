@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   // shopify_token: '44b883056337a5a864d6216b486a7b2a',
-  endpoint: 'http://localhost:3000'
+  endpoint: 'https://api.foreverai.app'
 };
 
 /*

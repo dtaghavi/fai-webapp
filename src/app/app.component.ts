@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SocketService } from './_services/socket.service';
+import { AppToastService } from './_services/toast.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ import { SocketService } from './_services/socket.service';
 export class AppComponent {
   title = 'Forever AI';
   constructor(
-    private socket: SocketService
+    private socket: SocketService,
+    public toastService: AppToastService
   ) {}
 }
