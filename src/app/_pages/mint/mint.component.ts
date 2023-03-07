@@ -38,6 +38,9 @@ export class MintComponent {
     percent?: number;
     error?: string;
 
+    get hidePrompt() {
+        return window.innerHeight <= 880 && this.previewBox;
+    }
     get previewBox(): boolean {
         return this.waiting || this.preview != undefined;
     }
@@ -63,7 +66,7 @@ export class MintComponent {
             this.preview = update.url;
             this.error = undefined;
             this.lastUpdate = update;
-            console.log('Update', update);
+            // console.log('Update', update);
 
             switch (update.type) {
                 case 'preview':
@@ -179,7 +182,7 @@ export class MintComponent {
                     this.aspect = 'square';
             }
         }
-        console.log('REG', reg, this.prePrompt);
+        // console.log('REG', reg, this.prePrompt);
 
         this.socket.io.emit('create-prompt', this.prePrompt)
     }
@@ -204,7 +207,7 @@ export class MintComponent {
     }
 
     onViewClick(ev: Event, off: boolean = false) {
-        console.log(ev);
+        // console.log(ev);
         ev.preventDefault()
 
         let target = <HTMLElement>ev.target;

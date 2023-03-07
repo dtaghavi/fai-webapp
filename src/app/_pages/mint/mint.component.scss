@@ -6,10 +6,13 @@
 }
 
 :host {
+    overflow: hidden;
+    overflow-y: auto;
     display: block;
     height: 100vh;
     width: 100vw;
     padding-top: 150px;
+
     background-image: url('../../../assets/backgrounds/mint_bg.png');
     background-size: cover;
     background-position: center;
@@ -20,20 +23,32 @@
         font-family: 'Rubik';
     }
 
+    @include media-breakpoint-down(md) {
+        padding-top: 100px;
+        padding-right: 60px;
+    }
+
     @include media-breakpoint-down(sm) {
         padding-top: 65px;
-        padding-right: 60px;
+        // padding-right: 60px;
     }
 
     .main-container {
         @include media-breakpoint-down(sm) {
-            padding-top: 55px !important;
+            // padding-top: 55px !important;
+        }
+    }
+    .mint-row {
+        margin-top: 3rem;
+
+        @media (max-height: '880px') {
+            margin-top: 1rem;
         }
     }
 
     .preview-row {
-        margin-top: 5rem;
-        padding: 0 20%;
+        margin-top: 1.5rem;
+        padding: 0 25%;
 
         .btn-primary {
             // color: #00D06C !important;
@@ -60,6 +75,17 @@
                     0 0 102px #0fa,
                     0 0 151px #0fa;
             }
+        }
+        
+        @media (max-height: '670px') {
+           .edit-prompt {
+                display: unset;
+           }
+        }
+
+        @include media-breakpoint-down(md) {
+            margin-top: 3rem;
+            padding: 0 10%;
         }
         
         @include media-breakpoint-down(sm) {

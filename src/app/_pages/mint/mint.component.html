@@ -1,17 +1,15 @@
 <div class="container p-3 main-container">
-    <div class="row">
+    <div class="row prompt-row" *ngIf="!hidePrompt">
         <div class="col-lg-9">
             <input class="form-control prompt-input" name="" id="" cols="30" rows="2" placeholder="Prompt your desired image" [(ngModel)]="prompt" [readonly]="waiting">
         </div>
         <div class="col-lg-3">
             <button class="grn-btn" (click)="onCreate()" [disabled]="waiting">Generate</button>
         </div>
-        
-
     </div>
     
     <div class="row preview-row">
-        <!-- <button class="btn btn-primary mb-2" (click)="onClear()" *ngIf="preview && !isLoading">Edit Prompt</button> -->
+        <button class="btn btn-primary mb-2 edit-prompt" (click)="onClear()" *ngIf="hidePrompt">Edit Prompt</button>
 
         <div class="preview-container mb-2" *ngIf="previewBox" [ngStyle]="{'padding-bottom': containerAspect ? containerAspect + '%' : null}">
             
@@ -186,13 +184,13 @@
         </div>
     </div>
 
-    <div class="row" *ngIf="error">
+    <!-- <div class="row" *ngIf="error">
         <div class="error" >
             <p >{{ error }}</p>
         </div>
-    </div>
+    </div> -->
 
-    <div class="row mt-5" *ngIf="preview">
+    <div class="row mint-row" *ngIf="preview">
         <button class="grn-btn mint-btn" style="height: 80px;" (click)="mint()">MINT</button>
     </div>
 
