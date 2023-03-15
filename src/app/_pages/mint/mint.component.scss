@@ -3,6 +3,10 @@
 @import 'bootstrap/scss/mixins/breakpoints';
 * {
     transition: .2s;
+
+    img {
+        pointer-events: none;
+    }
 }
 
 :host {

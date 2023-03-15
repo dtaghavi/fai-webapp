@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Images, OpenAIService } from 'src/app/_services/openai.service';
 import { SocketService } from 'src/app/_services/socket.service';
 import { AppToastService } from 'src/app/_services/toast.service';
 
@@ -27,6 +28,8 @@ export class MintComponent {
         }
         return `${this.prompt}${aspect}`;
     }
+
+    images?: Images;
 
     preview?: string ;
     containerAspect?: number;
@@ -57,51 +60,51 @@ export class MintComponent {
     // product?: ProductVariant;
 
     constructor(
-        private socket: SocketService,
         private sanitizer: DomSanitizer,
-        private toastService: AppToastService
+        private toastService: AppToastService,
+        private openai: OpenAIService
     ) {
-        this.socket.io.on('prompt-preview', async (update: Updates) => {
-            this.containerAspect = await this.getAspect(update.url);
-            this.preview = update.url;
-            this.error = undefined;
-            this.lastUpdate = update;
-            // console.log('Update', update);
+        // this.socket.io.on('prompt-preview', async (update: Updates) => {
+        //     this.containerAspect = await this.getAspect(update.url);
+        //     this.preview = update.url;
+        //     this.error = undefined;
+        //     this.lastUpdate = update;
+        //     // console.log('Update', update);
 
-            switch (update.type) {
-                case 'preview':
-                    if (update.percentage) {
-                        this.percent = +update.percentage;
-                        this.waiting = true;
-                    }
-                    break;
-                case 'quad':
-                    this.waiting = false;
-                    this.percent = undefined;
-                    this.zoom = undefined;
-                    this.previewMode = update.type;
-                    break;
-                case 'upscale':
-                    this.waiting = false;
-                    this.percent = undefined;
-                    this.zoom = undefined;
-                    this.previewMode = update.type;
-                    // this.getProducts();
-                    break;
-            }
-        })
+        //     switch (update.type) {
+        //         case 'preview':
+        //             if (update.percentage) {
+        //                 this.percent = +update.percentage;
+        //                 this.waiting = true;
+        //             }
+        //             break;
+        //         case 'quad':
+        //             this.waiting = false;
+        //             this.percent = undefined;
+        //             this.zoom = undefined;
+        //             this.previewMode = update.type;
+        //             break;
+        //         case 'upscale':
+        //             this.waiting = false;
+        //             this.percent = undefined;
+        //             this.zoom = undefined;
+        //             this.previewMode = update.type;
+        //             // this.getProducts();
+        //             break;
+        //     }
+        // })
 
-        this.socket.io.on('prompt-waiting', () => {
-            this.waiting = true;
-        })
+        // this.socket.io.on('prompt-waiting', () => {
+        //     this.waiting = true;
+        // })
 
-        this.socket.io.on('prompt-error', (error: any) => {
-            this.waiting = false;
-            this.percent = undefined;
-            this.zoom = undefined;
-            this.error = error;
-            if (typeof this.error != 'string') this.error = JSON.stringify(this.error);
-        })
+        // this.socket.io.on('prompt-error', (error: any) => {
+        //     this.waiting = false;
+        //     this.percent = undefined;
+        //     this.zoom = undefined;
+        //     this.error = error;
+        //     if (typeof this.error != 'string') this.error = JSON.stringify(this.error);
+        // })
 
         // this.getProducts();
     }
@@ -131,6 +134,16 @@ export class MintComponent {
     //     console.log(this.product);
 
     // }
+    async generateImage() {
+        if(this.prompt?.length) {
+            let urls: any = await this.openai.generateImage(this.prompt).catch(err => {
+                console.log({ err });
+            })
+
+            console.log(urls);
+            this.images = urls;
+        }
+    }
 
     onSetAspect(aspect: Aspects) {
         if (this.waiting) return;
@@ -159,42 +172,42 @@ export class MintComponent {
     }
 
     onCreate() {
-        this.preview = undefined;
-        this.previewMode = undefined;
-        this.zoom = undefined;
-        this.error = undefined;
-        if (!this.prompt) {
-            this.error = 'Empty Prompt field';
-            return;
-        }
-        let reg = new RegExp(aspectReg).exec(this.prompt);
-        if (reg) {
-            let [aspect, , ratio] = reg;
-            this.prompt = this.prompt.replace(aspect, '').trim()
-            switch (ratio) {
-                case '2:3':
-                    this.aspect = 'portrait';
-                    break;
-                case '3:2':
-                    this.aspect = 'landscape';
-                    break;
-                default:
-                    this.aspect = 'square';
-            }
-        }
-        // console.log('REG', reg, this.prePrompt);
+        // this.preview = undefined;
+        // this.previewMode = undefined;
+        // this.zoom = undefined;
+        // this.error = undefined;
+        // if (!this.prompt) {
+        //     this.error = 'Empty Prompt field';
+        //     return;
+        // }
+        // let reg = new RegExp(aspectReg).exec(this.prompt);
+        // if (reg) {
+        //     let [aspect, , ratio] = reg;
+        //     this.prompt = this.prompt.replace(aspect, '').trim()
+        //     switch (ratio) {
+        //         case '2:3':
+        //             this.aspect = 'portrait';
+        //             break;
+        //         case '3:2':
+        //             this.aspect = 'landscape';
+        //             break;
+        //         default:
+        //             this.aspect = 'square';
+        //     }
+        // }
+        // // console.log('REG', reg, this.prePrompt);
 
-        this.socket.io.emit('create-prompt', this.prePrompt)
+        // this.socket.io.emit('create-prompt', this.prePrompt)
     }
 
     onInteract(interaction: InteractionsType) {
-        if (this.lastUpdate) {
-            this.socket.io.emit('prompt-interact', {
-                message: this.lastUpdate.message,
-                channel: this.lastUpdate.channel,
-                interaction
-            })
-        }
+        // if (this.lastUpdate) {
+        //     this.socket.io.emit('prompt-interact', {
+        //         message: this.lastUpdate.message,
+        //         channel: this.lastUpdate.channel,
+        //         interaction
+        //     })
+        // }
     }
 
     onZoom(index: number) {
@@ -229,7 +242,9 @@ export class MintComponent {
         }
     }
 
-    async mint() {
+    async mint(image: any) {
+        console.log("Minting: ", image);
+        
          this.toastService.show({
             header: 'Mint Not Live',
             body: 'Minting will be allowed upon the launch of FAI Token.',

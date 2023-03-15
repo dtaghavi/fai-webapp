@@ -13,6 +13,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavBarComponent } from './_components/nav-bar/nav-bar.component';
 import { SocialsBarComponent } from './_components/socials-bar/socials-bar.component';
 import { AppToastService } from './_services/toast.service';
+import { OpenAIService } from './_services/openai.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,11 +28,13 @@ import { AppToastService } from './_services/toast.service';
     HomeComponentModule,
     MintComponentModule,
     FontAwesomeModule,
+    HttpClientModule,
     NgbModule
   ],
   providers: [
     SocketService,
-    AppToastService
+    AppToastService,
+    OpenAIService
   ],
   bootstrap: [AppComponent]
 })

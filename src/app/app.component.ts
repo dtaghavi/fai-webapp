@@ -10,7 +10,6 @@ import { AppToastService } from './_services/toast.service';
 export class AppComponent {
   title = 'Forever AI';
   constructor(
-    private socket: SocketService,
     public toastService: AppToastService
   ) {}
 }
