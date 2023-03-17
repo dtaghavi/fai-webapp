@@ -15,6 +15,9 @@ import { SocialsBarComponent } from './_components/socials-bar/socials-bar.compo
 import { AppToastService } from './_services/toast.service';
 import { OpenAIService } from './_services/openai.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MenuController } from './_services/menu-controller.service';
+import { SideMenuComponent } from './_components/side-menu/side-menu.component';
+import { SideMenuComponentModule } from './_components/side-menu/side-menu.module';
 
 @NgModule({
   declarations: [
@@ -29,12 +32,14 @@ import { HttpClientModule } from '@angular/common/http';
     MintComponentModule,
     FontAwesomeModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    SideMenuComponentModule
   ],
   providers: [
     SocketService,
     AppToastService,
-    OpenAIService
+    OpenAIService,
+    MenuController
   ],
   bootstrap: [AppComponent]
 })

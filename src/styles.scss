@@ -18,6 +18,10 @@
     src: url('./assets/fonts/NeueMachina-Ultrabold.otf');
   }
 
+html, body {
+  height: 100%;
+}
+
 .container-fluid {
   padding: 0 !important;
 }

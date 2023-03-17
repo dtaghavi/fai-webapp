@@ -1,5 +1,5 @@
 <div class="container p-3 main-container">
-    <div class="row prompt-row">
+    <div class="row prompt-row" *ngIf="!hidePrompt">
         <div class="col-lg-9">
             <input class="form-control prompt-input" name="" id="" cols="30" rows="2" placeholder="Prompt your desired image" [(ngModel)]="prompt" [readonly]="waiting">
         </div>
@@ -8,12 +8,11 @@
         </div>
     </div>
 
-    <ng-container *ngIf="images">
+
+    <!-- <ng-container *ngIf="images">
         <div class="row col-lg-3" *ngFor="let image of images">
-            <!-- Black Square Background -->
             <img src="../../../assets/nft-bg.png">
 
-            <!-- Actual Image -->
             <div >
                 <img [src]="image.url" >
             </div>
@@ -22,9 +21,9 @@
                 <button class="grn-btn mint-btn" style="height: 80px;" (click)="mint(image)">MINT</button>
             </div>
         </div>
-    </ng-container>
+    </ng-container> -->
     
-    <!-- <div class="row preview-row">
+    <div class="row preview-row">
         <button class="btn btn-primary mb-2 edit-prompt" (click)="onClear()" *ngIf="hidePrompt">Edit Prompt</button>
 
         <div class="preview-container mb-2" *ngIf="previewBox" [ngStyle]="{'padding-bottom': containerAspect ? containerAspect + '%' : null}">
@@ -32,75 +31,20 @@
             <div class="image-container" [class]="zoom">
                 <ng-container [ngSwitch]="previewMode" *ngIf="!waiting">
 
-                    <div class="quads desktop" *ngSwitchCase="'quad'">
-                        <div class="image-cover">
-                            <div class="buttons">
-                                <a class="btn btn-primary mb-2" (click)="onInteract('variants-1')">
-                                    <fa-icon [icon]="['fas', 'table-cells-large']"></fa-icon>
-                                    Variants
-                                </a>
-                                <br>
-                                <a class="btn btn-primary" (click)="onInteract('upscale-1')">
-                                    <fa-icon [icon]="['fas', 'expand']"></fa-icon>
-                                    Upscale
-                                </a>
-                            </div>
-                        </div>
-                        <div class="image-cover">
-                            <div class="buttons">
-                                <a class="btn btn-primary mb-2" (click)="onInteract('variants-2')">
-                                    <fa-icon [icon]="['fas', 'table-cells-large']"></fa-icon>
-                                    Variants
-                                </a>
-                                <br>
-                                <a class="btn btn-primary" (click)="onInteract('upscale-2')">
-                                    <fa-icon [icon]="['fas', 'expand']"></fa-icon>
-                                    Upscale
-                                </a>
-                            </div>
-                        </div>
-                        <div class="image-cover">
-                            <div class="buttons">
-                                <a class="btn btn-primary mb-2" (click)="onInteract('variants-3')">
-                                    <fa-icon [icon]="['fas', 'table-cells-large']"></fa-icon>
-                                    Variants
-                                </a>
-                                <br>
-                                <a class="btn btn-primary" (click)="onInteract('upscale-3')">
-                                    <fa-icon [icon]="['fas', 'expand']"></fa-icon>
-                                    Upscale
-                                </a>
-                            </div>
-                        </div>
-                        <div class="image-cover">
-                            <div class="buttons">
-                                <a class="btn btn-primary mb-2" (click)="onInteract('variants-4')">
-                                    <fa-icon [icon]="['fas', 'table-cells-large']"></fa-icon>
-                                    Variants
-                                </a>
-                                <br>
-                                <a class="btn btn-primary" (click)="onInteract('upscale-4')">
-                                    <fa-icon [icon]="['fas', 'expand']"></fa-icon>
-                                    Upscale
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    
 
                     <div class="quads mobile" *ngSwitchCase="'quad'">
                         <div class="image-cover" (click)="onZoom(1)">
+                            <img [src]="images![0].url" alt="">
                             <div class="buttons">
                                 <div class="controls">
                                     <a class="btn btn-primary view" (click)="onUnZoom($event)">
                                         <fa-icon [icon]="['fas', 'times']"></fa-icon>
                                         Back
                                     </a>
-
-                                    <a class="btn btn-outline-light view" (click)="onViewClick($event)">
-                                        <fa-icon [icon]="['fas', 'eye']"></fa-icon>
-                                    </a>
                                 </div>
-                                <a class="btn btn-primary mb-2" (click)="onInteract('variants-1')">
+                                <button class="grn-btn mint-btn" style="height: 80px;" (click)="mint(images![0])">MINT</button>
+                                <!-- <a class="btn btn-primary mb-2" (click)="onInteract('variants-1')">
                                     <fa-icon [icon]="['fas', 'table-cells-large']"></fa-icon>
                                     Variants
                                 </a>
@@ -108,22 +52,20 @@
                                 <a class="btn btn-primary" (click)="onInteract('upscale-1')">
                                     <fa-icon [icon]="['fas', 'expand']"></fa-icon>
                                     Upscale
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                         <div class="image-cover" (click)="onZoom(2)">
+                            <img [src]="images![1].url" alt="">
                             <div class="buttons">
                                 <div class="controls">
                                     <a class="btn btn-primary view" (click)="onUnZoom($event)">
                                         <fa-icon [icon]="['fas', 'times']"></fa-icon>
                                         Back
                                     </a>
-
-                                    <a class="btn btn-outline-light view" (click)="onViewClick($event)">
-                                        <fa-icon [icon]="['fas', 'eye']"></fa-icon>
-                                    </a>
                                 </div>
-                                <a class="btn btn-primary mb-2" (click)="onInteract('variants-2')">
+                                <button class="grn-btn mint-btn" style="height: 80px;" (click)="mint(images![1])">MINT</button>
+                                <!-- <a class="btn btn-primary mb-2" (click)="onInteract('variants-2')">
                                     <fa-icon [icon]="['fas', 'table-cells-large']"></fa-icon>
                                     Variants
                                 </a>
@@ -131,22 +73,20 @@
                                 <a class="btn btn-primary" (click)="onInteract('upscale-2')">
                                     <fa-icon [icon]="['fas', 'expand']"></fa-icon>
                                     Upscale
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                         <div class="image-cover" (click)="onZoom(3)">
+                            <img [src]="images![2].url" alt="">
                             <div class="buttons">
                                 <div class="controls">
                                     <a class="btn btn-primary view" (click)="onUnZoom($event)">
                                         <fa-icon [icon]="['fas', 'times']"></fa-icon>
                                         Back
                                     </a>
-
-                                    <a class="btn btn-outline-light view" (click)="onViewClick($event)">
-                                        <fa-icon [icon]="['fas', 'eye']"></fa-icon>
-                                    </a>
                                 </div>
-                                <a class="btn btn-primary mb-2" (click)="onInteract('variants-3')">
+                                <button class="grn-btn mint-btn" style="height: 80px;" (click)="mint(images![2])">MINT</button>
+                                <!-- <a class="btn btn-primary mb-2" (click)="onInteract('variants-3')">
                                     <fa-icon [icon]="['fas', 'table-cells-large']"></fa-icon>
                                     Variants
                                 </a>
@@ -154,22 +94,20 @@
                                 <a class="btn btn-primary" (click)="onInteract('upscale-3')">
                                     <fa-icon [icon]="['fas', 'expand']"></fa-icon>
                                     Upscale
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                         <div class="image-cover" (click)="onZoom(4)">
+                            <img [src]="images![3].url" alt="">
                             <div class="buttons">
                                 <div class="controls">
                                     <a class="btn btn-primary view" (click)="onUnZoom($event)">
                                         <fa-icon [icon]="['fas', 'times']"></fa-icon>
                                         Back
                                     </a>
-
-                                    <a class="btn btn-outline-light view" (click)="onViewClick($event)">
-                                        <fa-icon [icon]="['fas', 'eye']"></fa-icon>
-                                    </a>
                                 </div>
-                                <a class="btn btn-primary mb-2" (click)="onInteract('variants-4')">
+                                <button class="grn-btn mint-btn" style="height: 80px;" (click)="mint(images![3])">MINT</button>
+                                <!-- <a class="btn btn-primary mb-2" (click)="onInteract('variants-4')">
                                     <fa-icon [icon]="['fas', 'table-cells-large']"></fa-icon>
                                     Variants
                                 </a>
@@ -177,7 +115,7 @@
                                 <a class="btn btn-primary" (click)="onInteract('upscale-4')">
                                     <fa-icon [icon]="['fas', 'expand']"></fa-icon>
                                     Upscale
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                     </div>
@@ -185,7 +123,7 @@
 
                 </ng-container>
     
-                <img [src]="preview" *ngIf="preview">
+                <!-- <img [src]="preview" *ngIf="preview"> -->
             </div>
 
             <div class="waiting" *ngIf="!isLoading && waiting">
@@ -198,7 +136,7 @@
                 <div class="bar" [style.width.%]="percent ? percent : 0"></div>
             </div>
         </div>
-    </div> -->
+    </div>
 
     <!-- <div class="row" *ngIf="error">
         <div class="error" >

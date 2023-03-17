@@ -6,8 +6,8 @@
     
 
     <!-- Mobile menu toggle -->
-    <img class="ham-menu" src="../../../assets/white-ham.svg" *ngIf="!mobileToggle">
-    <img class="ham-menu" src="../../../assets/close-icon.svg" *ngIf="mobileToggle" (click)="mobileToggle = !mobileToggle">
+    <img class="ham-menu" src="../../../assets/white-ham.svg" *ngIf="!menu.menuIsOpen" (click)="onOpen($event)">
+    <img class="ham-menu" src="../../../assets/close-icon.svg" *ngIf="menu.menuIsOpen" (click)="onClose($event)">
     <!-- Right Side: Links -->
     <div class="link-container">
         <div class="nav-item" routerLink="mint">
@@ -33,7 +33,7 @@
     </div>
 
     <!-- Mobile menu: Only shows when toggled and in mobile size. -->
-    <div class="mobile-menu" [ngClass]="{open: mobileToggle}">
+    <!-- <div class="mobile-menu" [ngClass]="{open: mobileToggle}">
         <div class="nav-item">
             <a class="nav-link" href="https://vividuniverse.gitbook.io/foreverai/tokenomics/fai-token-metrics">TOKENOMICS</a>
         </div>
@@ -46,5 +46,5 @@
             <img src="../../../assets/btn.svg" alt="connect">
             <span>CONNECT WALLET</span>
         </div>
-    </div>
+    </div> -->
 </div>

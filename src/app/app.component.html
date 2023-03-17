@@ -1,6 +1,9 @@
-<app-nav-bar></app-nav-bar>
-<app-socials-bar></app-socials-bar>
-<router-outlet></router-outlet>
+<app-side-menu></app-side-menu>
+<div class="app-body" [ngClass]="{'open': menuController.menuIsOpen}" (click)="onCloseMenu()">
+    <app-nav-bar></app-nav-bar>
+    <app-socials-bar></app-socials-bar>
+    <router-outlet></router-outlet>
+</div>
 
 <div class="toast-container">
     <ngb-toast

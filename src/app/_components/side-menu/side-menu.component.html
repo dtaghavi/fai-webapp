@@ -1,0 +1,14 @@
+<ul>
+    <li *ngFor="let item of menuController.menuItems">
+        <ng-container *ngIf="item.external">
+            <a [href]="item.url" target="_blank">{{ item.label }}</a>
+        </ng-container>
+        <ng-container *ngIf="!item.external">
+            <a [routerLink]="item.url" routerLinkActive="active" (click)="menuController.menuIsOpen = false">{{ item.label }}</a>
+        </ng-container>
+    </li>
+</ul>
+
+<div class="social">
+    
+</div>

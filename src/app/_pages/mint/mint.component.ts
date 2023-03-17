@@ -30,8 +30,6 @@ export class MintComponent {
     }
 
     images?: Images;
-
-    preview?: string ;
     containerAspect?: number;
     aspect: Aspects  = 'square';
     previewMode?: 'quad' | 'upscale';
@@ -45,7 +43,7 @@ export class MintComponent {
         return window.innerHeight <= 880 && this.previewBox;
     }
     get previewBox(): boolean {
-        return this.waiting || this.preview != undefined;
+        return this.waiting || this.images != undefined;
     }
 
     get isLoading(): boolean {
@@ -136,12 +134,15 @@ export class MintComponent {
     // }
     async generateImage() {
         if(this.prompt?.length) {
+            this.waiting = true;
             let urls: any = await this.openai.generateImage(this.prompt).catch(err => {
                 console.log({ err });
             })
 
             console.log(urls);
             this.images = urls;
+            this.previewMode = 'quad';
+            this.waiting = false;
         }
     }
 
@@ -164,7 +165,7 @@ export class MintComponent {
     }
 
     onClear() {
-        this.preview = undefined;
+        this.images = undefined;
         this.previewMode = undefined;
         this.containerAspect = undefined;
         this.error = undefined;

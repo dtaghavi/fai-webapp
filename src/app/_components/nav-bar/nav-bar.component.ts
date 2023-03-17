@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { faHamburger } from '@fortawesome/free-solid-svg-icons';
+import { MenuController } from 'src/app/_services/menu-controller.service';
 import Web3 from 'web3';
 
 declare const window: any;
@@ -11,7 +12,6 @@ declare const window: any;
 })
 export class NavBarComponent {
     web3?: Web3;
-    mobileToggle = false;
     connected: boolean = false;
     connected_user?: string;
     hamBurger = faHamburger;
@@ -20,7 +20,9 @@ export class NavBarComponent {
         if (this.connected_user) return `${this.connected_user.slice(0, 3)}...${this.connected_user.slice(-4)}`
         else return 'Connect Wallet'
     }
-    constructor() {
+    constructor(
+        public menu: MenuController
+    ) {
     }
 
     handleConnectClick() {
@@ -71,5 +73,15 @@ export class NavBarComponent {
                 }
             });
         }
+    }
+
+    onOpen(ev: Event) {
+        ev.stopPropagation()
+        this.menu.menuIsOpen = true;
+    }
+
+    onClose(ev: Event) {
+        ev.stopPropagation()
+        this.menu.menuIsOpen = false;
     }
 }

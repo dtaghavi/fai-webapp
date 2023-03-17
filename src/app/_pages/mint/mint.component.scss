@@ -147,18 +147,20 @@
             width: 100%;
             height: 100%;
 
-            @include media-breakpoint-down(sm) {
-                // transition: .4s ease-in-out;
-                .quads.mobile {
-                    display: block !important;
-                }
+            // @include media-breakpoint-down(sm) {
+            //     // transition: .4s ease-in-out;
+            //     .quads.mobile {
+            //         display: block !important;
+            //     }
 
-                .quads.desktop {
-                    display: none;
-                }
+            //     .quads.desktop {
+            //         display: none;
+            //     }
                 
 
-                &.zoom {
+                
+            // }
+&.zoom {
                     width: 200%;
                     height: 200%;
                     .quads .image-cover {
@@ -208,8 +210,6 @@
                         }
                     }
                 }
-            }
-
             .quads {
                 position: absolute;
                 width: 100%;
@@ -217,10 +217,19 @@
                 font-size: 0;
 
                 .image-cover {
+                    position: relative;
+                    overflow: hidden;
                     font-size: initial;
                     width: 50%;
                     height: 50%;
                     display: inline-flex;
+
+                    img {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
 
                     &:nth-child(1) {
                         border-top-left-radius: 10px;
@@ -274,7 +283,7 @@
                 }
 
                 &.mobile {
-                    display: none;
+                    display: block;
 
                     .image-cover {
                         border: 2px solid rgb(188, 188, 188);
