@@ -5,15 +5,17 @@ export class MenuController {
     public menuIsOpen: boolean = false;
     public menuItems: MenuItem[] = [
         {
-            url: '/mint',
+            url: "mint",
             label: 'DAPP'
         },
         {
-            url: 'https://vividuniverse.gitbook.io/foreverai/tokenomics/fai-token-metrics',
+            external: true,
+            url: "https://vividuniverse.gitbook.io/foreverai/tokenomics/fai-token-metrics",
             label: 'TOKENOMICS'
         },
         {
-            url: 'https://vividuniverse.gitbook.io/foreverai/',
+            external: true,
+            url: "https://vividuniverse.gitbook.io/foreverai/",
             label: 'WHITEPAPER'
         }
     ]

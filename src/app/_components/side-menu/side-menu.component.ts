@@ -1,4 +1,5 @@
 import { Component, HostBinding } from "@angular/core";
+import { Router } from "@angular/router";
 import { MenuController } from "src/app/_services/menu-controller.service";
 
 @Component({
@@ -13,8 +14,13 @@ export class SideMenuComponent {
 
 
     constructor(
-        public menuController: MenuController
+        public menuController: MenuController,
+        private router: Router
     ) {
 
+    }
+
+    toDapp() {
+        this.router.navigate(['mint']);
     }
 }

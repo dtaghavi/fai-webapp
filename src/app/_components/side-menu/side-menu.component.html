@@ -4,7 +4,7 @@
             <a [href]="item.url" target="_blank">{{ item.label }}</a>
         </ng-container>
         <ng-container *ngIf="!item.external">
-            <a [routerLink]="item.url" routerLinkActive="active" (click)="menuController.menuIsOpen = false">{{ item.label }}</a>
+            <a [routerLink]="item.url" routerLinkActive="active" (click)="menuController.menuIsOpen = false; toDapp()">{{ item.label }}</a>
         </ng-container>
     </li>
 </ul>
